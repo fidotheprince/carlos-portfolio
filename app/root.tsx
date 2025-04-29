@@ -6,6 +6,8 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
+import Footer from "./components/Footer";
+import NavigationBar from "./components/NavigationBar";
 
 import "./tailwind.css";
 
@@ -31,15 +33,22 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-black">
+        <NavigationBar/>
         {children}
+        <Footer />
+        <div className="flex justify-center mt-4">
+          <img 
+            src="/pretty-anime-girl-saying-goodbye.png" 
+            alt="Anime coder girl" 
+          />
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
     </html>
   );
 }
-
 export default function App() {
   return <Outlet />;
 }
